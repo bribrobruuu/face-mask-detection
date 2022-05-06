@@ -70,20 +70,13 @@ while True:
 		label = "Mask" if mask > withoutMask else "No Mask"
 		color = (0, 255, 0) if label == "Mask" else (0, 0, 255)
 
-		frequency = 200 # Set Frequency To 2500 Hertz
-		duration = 2000  # Set Duration To 1000 ms == 1 second
-		ind = 0
 		
-		if mask > withoutMask:
-			winsound.Beep(37, 0) 
-		else:
-			winsound.Beep(frequency, duration)
-			
+		# frequency = 200 # Set Frequency To 2500 Hertz
+		# duration = 2000  # Set Duration To 1000 ms == 1 second
+		if mask < withoutMask:
+			ind = 0
 			cv2.imwrite(f"nomask{ind}.png",frame)
-			#playsound('mask.mp3')
-			#time.sleep(7000)
-			ind +=1
-			
+			ind=ind+1
 		
 		label = "{}: {:.2f}%".format(label, max(mask, withoutMask) * 100)
 		
